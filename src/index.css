@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 43% 4%;
+    --foreground: 216 100% 98%;
+    --card: 216 42% 9%;
+    --card-foreground: 216 100% 98%;
+    --popover: 216 42% 9%;
+    --popover-foreground: 216 100% 98%;
+    --primary: 75 100% 59%;
+    --primary-foreground: 216 43% 4%;
+    --secondary: 216 42% 9%;
+    --secondary-foreground: 216 100% 98%;
+    --muted: 216 24% 14%;
+    --muted-foreground: 216 20% 64%;
+    --accent: 174 80% 51%;
+    --accent-foreground: 216 43% 4%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 216 22% 22%;
+    --input: 216 22% 22%;
+    --ring: 75 100% 59%;
+    --secondary-accent: #1EE6D4;
+    --cta-gradient: linear-gradient(90deg, #C9FF2E, #7DFF9E);
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    @apply bg-agtech-black text-agtech-white font-body antialiased;
+    overflow-x: hidden;
+  }
+  
+  ::selection {
+    background: rgba(201, 255, 46, 0.32);
+    color: #F5F9FF;
+  }
+}
+
+@layer components {
+  .viewport-frame {
+    @apply absolute rounded-viewport border border-agtech-lime/35 pointer-events-none;
+    left: 50%;
+    top: 50%;
+    width: 86vw;
+    height: 86vh;
+    transform: translate(-50%, -50%);
+  }
+  
+  .viewport-frame-inset {
+    @apply absolute rounded-viewport border border-agtech-white/14 pointer-events-none;
+    inset: clamp(8px, 1vw, 14px);
+  }
+  
+  .hairline {
+    @apply bg-agtech-white/22;
+    width: 1px;
+  }
+  
+  .grain-overlay {
+    @apply fixed inset-0 pointer-events-none z-50;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+  }
+  
+  .headline-display {
+    @apply font-display font-black uppercase tracking-tight leading-[0.92];
+    font-size: clamp(44px, 6vw, 96px);
+    letter-spacing: -0.02em;
+  }
+  
+  .headline-section {
+    @apply font-display font-black uppercase tracking-tight leading-[0.92];
+    font-size: clamp(36px, 5vw, 72px);
+    letter-spacing: -0.02em;
+  }
+  
+  .label-mono {
+    @apply font-mono font-medium uppercase tracking-widest text-xs;
+    letter-spacing: 0.12em;
+  }
+  
+  .body-text {
+    @apply font-body font-normal leading-relaxed;
+    font-size: clamp(14px, 1.2vw, 18px);
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-agtech-black font-display font-bold text-sm uppercase tracking-wider rounded-lg transition-all duration-300;
+    background-image: var(--cta-gradient);
+  }
+  
+  .btn-primary:hover {
+    @apply -translate-y-0.5 shadow-glow;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-agtech-white/30 text-agtech-white font-display font-bold text-sm uppercase tracking-wider rounded-lg transition-all duration-300;
+  }
+  
+  .btn-secondary:hover {
+    @apply border-agtech-lime text-agtech-lime -translate-y-0.5;
+  }
+  
+  .image-grade {
+    filter: saturate(0.85) contrast(1.05);
+  }
+  
+  .section-pinned {
+    @apply w-screen h-screen relative overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  @keyframes number-glow-pulse {
+    0% {
+      text-shadow: 0 0 0 rgba(201, 255, 46, 0);
+    }
+    42% {
+      text-shadow: 0 0 14px rgba(201, 255, 46, 0.52), 0 0 24px rgba(201, 255, 46, 0.28);
+    }
+    100% {
+      text-shadow: 0 0 0 rgba(201, 255, 46, 0);
+    }
+  }
+
+  @keyframes number-settle {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    38% {
+      transform: translateY(-1px) scale(1.02);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-number-glow {
+    animation: number-glow-pulse 360ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-number-settle {
+    animation: number-settle 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center bottom;
+  }
+}
+
+/* Smooth scrolling for GSAP */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060A0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0D1520;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C9FF2E;
+}

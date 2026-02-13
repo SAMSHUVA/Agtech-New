@@ -1,0 +1,401 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: auto;
+}
+
+/* Section base styles */
+section {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: relative;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+#root {
+  min-height: 100%;
+  isolation: isolate;
+  overflow-x: clip;
+  width: 100%;
+}
+
+main {
+  overflow-x: clip;
+}
+
+/* Image loading optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  section[id] {
+    scroll-margin-top: 84px;
+  }
+
+  main > section {
+    overflow-x: clip;
+  }
+
+  /* Typography adjustments */
+  .headline-display {
+    font-size: clamp(36px, 12vw, 56px) !important;
+    line-height: 0.95 !important;
+  }
+  
+  .headline-section {
+    font-size: clamp(28px, 10vw, 42px) !important;
+    line-height: 0.98 !important;
+  }
+  
+  .body-text {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+  
+  .label-mono {
+    font-size: 11px !important;
+  }
+  
+  /* Button adjustments */
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 28px !important;
+    font-size: 12px !important;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Hero section adjustments */
+  .viewport-frame {
+    width: 92vw !important;
+    height: 90vh !important;
+    border-radius: 16px !important;
+  }
+  
+  /* Split sections - stack vertically */
+  .split-section {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+  
+  .split-section > div:first-child {
+    width: 100% !important;
+    height: 45vh !important;
+    position: relative !important;
+  }
+  
+  .split-section > div:last-child {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 55vh !important;
+    position: relative !important;
+    padding: 32px 24px !important;
+  }
+  
+  /* Hide vertical dividers on mobile */
+  .vertical-divider {
+    display: none !important;
+  }
+  
+  /* 3-panel grids - stack vertically */
+  .three-panel-grid {
+    flex-direction: column !important;
+    min-height: auto !important;
+  }
+  
+  .three-panel-grid > div {
+    width: 100% !important;
+    height: 33.33vh !important;
+    min-height: 280px !important;
+  }
+  
+  /* Panel content adjustments */
+  .panel-label {
+    top: 20px !important;
+    left: 20px !important;
+  }
+  
+  .panel-headline {
+    bottom: 20px !important;
+    left: 20px !important;
+    right: 20px !important;
+  }
+  
+  .panel-headline h3 {
+    font-size: 18px !important;
+  }
+  
+  /* Price tag adjustments */
+  .panel-price {
+    top: 20px !important;
+    right: 20px !important;
+  }
+  
+  /* Hero content positioning */
+  .hero-tag {
+    top: 80px !important;
+  }
+  
+  .hero-subheadline {
+    top: auto !important;
+    bottom: 160px !important;
+    position: absolute !important;
+    padding: 0 24px !important;
+  }
+  
+  .hero-cta {
+    top: auto !important;
+    bottom: 80px !important;
+    position: absolute !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 0 24px !important;
+  }
+  
+  .hero-micro {
+    display: none !important;
+  }
+  
+  /* Closing section adjustments */
+  .closing-image-block {
+    max-width: 100% !important;
+    height: 50vh !important;
+    margin: 0 16px !important;
+  }
+  
+  /* Contact section */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  
+  /* Footer */
+  .footer-content {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+}
+
+/* ============================================
+   TABLET RESPONSIVENESS (769px - 1024px)
+   ============================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .headline-display {
+    font-size: clamp(48px, 8vw, 72px) !important;
+  }
+  
+  .headline-section {
+    font-size: clamp(36px, 6vw, 48px) !important;
+  }
+  
+  /* 3-panel grids - 2 columns on tablet */
+  .three-panel-grid {
+    flex-wrap: wrap !important;
+  }
+  
+  .three-panel-grid > div {
+    width: 50% !important;
+    height: 50vh !important;
+  }
+  
+  .three-panel-grid > div:last-child {
+    width: 100% !important;
+  }
+}
+
+/* ============================================
+   SMALL MOBILE (max-width: 375px)
+   ============================================ */
+@media (max-width: 375px) {
+  .headline-display {
+    font-size: 32px !important;
+  }
+  
+  .headline-section {
+    font-size: 26px !important;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 20px !important;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCES
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   BUTTON & INTERACTION EFFECTS
+   ============================================ */
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* Link underline animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Custom cursor for interactive elements */
+@media (pointer: fine) {
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #C9FF2E;
+  outline-offset: 4px;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(201, 255, 46, 0.32);
+  color: #F5F9FF;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060A0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0D1520;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C9FF2E;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0D1520 #060A0F;
+}
+
+@keyframes circuit-pulse {
+  0%, 100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes node-float {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes bg-float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -24px, 0);
+  }
+}
+
+@keyframes scroll-cue {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}
+
+.animate-circuit-pulse {
+  animation: circuit-pulse 3.2s ease-in-out infinite;
+}
+
+.animate-node-float {
+  animation: node-float 4.2s ease-in-out infinite;
+}
+
+.animate-bg-float-slow {
+  animation: bg-float-slow 11s ease-in-out infinite;
+}
+
+.animate-scroll-cue {
+  animation: scroll-cue 1.9s ease-in-out infinite;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.split-section {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.three-panel-grid {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.vertical-divider {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(244, 255, 244, 0.22);
+}
